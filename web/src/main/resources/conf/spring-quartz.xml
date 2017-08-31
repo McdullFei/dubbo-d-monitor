@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:task = "http://www.springframework.org/schema/task"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+  <task:scheduler id = "qbScheduler" pool-size = "30"/>
+
+  <task:scheduled-tasks scheduler = "qbScheduler">
+
+    <!-- 每分钟触发一次检查,若超时还未连接，则做发短信、邮件等操作。 -->
+    <task:scheduled ref = "appStopTask" method = "smsStopApp" cron = "0 * * * * ?"/>
+
+    <!-- 每天凌晨 00：30分执行 -->
+    <task:scheduled ref = "commonTask" method = "everyDayDo" cron = "0 30 0 * * ?"/>
+
+    <task:scheduled ref = "invokeReportTask" method = "everyHourDo" cron = "0 1 * * * ?"/>
+    <task:scheduled ref = "invokeReportTask" method = "everyDayDo" cron = "0 1 0 * * ?"/>
+
+  </task:scheduled-tasks>
+</beans>

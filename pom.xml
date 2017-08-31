@@ -12,6 +12,7 @@
     <module>bean</module>
     <module>dao</module>
     <module>common</module>
+    <!--<module>monitorapi</module>-->
   </modules>
 
   <properties>
