@@ -23,10 +23,10 @@ public class AppStopRedisManagerImpl implements AppStopRedisManager {
     @Override
     public Map<ApplicationChangeBO, String> getAllStopApp() {
         Map<ApplicationChangeBO, String> resultMap = new HashMap<>();
-        for(Map.Entry<String,String> entry : redisClientTemplate.getAllHash(RedisKeyBean.appStopMapKey).entrySet()){
-            String key = entry.getKey();
+        for(Map.Entry<Object,Object> entry : redisClientTemplate.getAllHash(RedisKeyBean.appStopMapKey).entrySet()){
+            String key = String.valueOf(entry.getKey());
             ApplicationChangeBO applicationChangeBO = JsonUtil.jsonStrToObject(key, ApplicationChangeBO.class);
-            resultMap.put(applicationChangeBO,entry.getValue());
+            resultMap.put(applicationChangeBO,String.valueOf(entry.getValue()));
         }
         return resultMap;
     }

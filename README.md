@@ -1,5 +1,15 @@
 ---
 
+# fork by renfei更新日志
+### 2017.08.30
+> HTSS dubbo-monitor 0.0.1:
+
+1.升级spring版本到4.3.8，以及相关依赖的版本升级
+2.更新jar包中ShardedJedis的封装已经使用spring-data-redis(废弃RedisClientTemplate、RedisDataSource)
+
+
+
+
 # 项目介绍:(1.1.2)
 
 ## 注意：branch

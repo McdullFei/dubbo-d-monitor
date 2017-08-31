@@ -10,10 +10,10 @@ import lombok.Data;
  */
 @Data
 public class MethodRankBO {
-    //方法名
-    public String methodName;
-    //函数
-    public String serviceName;
-    //调用次数
-    public Integer usedNum;
+  //方法名
+  public String methodName;
+  //函数
+  public String serviceName;
+  //调用次数
+  public Integer usedNum;
 }

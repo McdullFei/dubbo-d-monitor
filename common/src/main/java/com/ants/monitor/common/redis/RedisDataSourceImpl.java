@@ -13,7 +13,8 @@ import redis.clients.jedis.ShardedJedisPool;
 /**
  * Created by zxg on 15/7/20.
  */
-@Component
+@Deprecated
+//@Component
 @Slf4j
 public class RedisDataSourceImpl implements RedisDataSource {
 

@@ -14,39 +14,41 @@ import java.io.Serializable;
 @ToString
 public class ApplicationChangeBO implements Serializable {
 
-    private String host;
+  private String host;
 
-    private String port;
+  private String port;
 
-    private String appName;
+  private String appName;
 
-    private String time;
+  private String time;
 
-    //类型
-    private String category;
+  //类型
+  private String category;
 
-    // 所属团队
-    private String  organization;
+  // 所属团队
+  private String organization;
 
-    private String hostString;
+  private String hostString;
 
-    /**执行的操作；insert／delete**/
-    private String doType;
+  /**执行的操作；insert／delete**/
+  private String doType;
 
-    public ApplicationChangeBO(){}
-    public ApplicationChangeBO(String host,String port,String appName,String category,String organization){
-        this.host = host;
-        this.port = port;
-        this.appName = appName;
-        this.category = category;
-        this.organization = organization;
+  public ApplicationChangeBO() {
+  }
+
+  public ApplicationChangeBO(String host, String port, String appName, String category, String organization) {
+    this.host = host;
+    this.port = port;
+    this.appName = appName;
+    this.category = category;
+    this.organization = organization;
+  }
+
+  public String getHostString() {
+    if (port == null || port.equals("0")) {
+      return host;
     }
-
-    public String getHostString(){
-        if(port == null || port.equals("0")){
-            return host;
-        }
-        return host+":"+port;
-    }
+    return host + ":" + port;
+  }
 
 }

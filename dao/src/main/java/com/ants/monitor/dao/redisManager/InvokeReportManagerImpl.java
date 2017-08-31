@@ -34,16 +34,16 @@ public class InvokeReportManagerImpl implements InvokeReportManager {
     @Override
     public Map<String, Map<String, Integer>> getAppRelationByAppOnDay(String sourceApp, String dayTime) {
         String key = String.format(RedisKeyBean.appInvokeSumOnDayKEY,sourceApp,dayTime);
-        Map<String,String> redisMap = redisClientTemplate.getAllHash(key);
+        Map<Object,Object> redisMap = redisClientTemplate.getAllHash(key);
 
         Map<String, Map<String, Integer>> result = new HashMap<>();
         if (redisMap.isEmpty()) {
             return result;
         }
-        for(Map.Entry<String,String> entry : redisMap.entrySet()){
-            String valueString = entry.getValue();
+        for(Map.Entry<Object,Object> entry : redisMap.entrySet()){
+            String valueString = String.valueOf(entry.getValue());
             Map<String, Integer> valueMap = JsonUtil.jsonStrToMap(valueString);
-            result.put(entry.getKey(),valueMap);
+            result.put(String.valueOf(entry.getKey()),valueMap);
         }
         return result;
     }
@@ -63,16 +63,16 @@ public class InvokeReportManagerImpl implements InvokeReportManager {
     @Override
     public Map<String, ?> getConsumerByAppOnHour(String sourceApp, String dayTime) {
         String key = String.format(RedisKeyBean.appConsumerSumOnHourKEY,sourceApp,dayTime);
-        Map<String,String> redisMap = redisClientTemplate.getAllHash(key);
+        Map<Object,Object> redisMap = redisClientTemplate.getAllHash(key);
 
         Map<String, Map<String, ?>> result = new HashMap<>();
         if (redisMap.isEmpty()) {
             return result;
         }
-        for(Map.Entry<String,String> entry : redisMap.entrySet()){
-            String valueString = entry.getValue();
+        for(Map.Entry<Object,Object> entry : redisMap.entrySet()){
+            String valueString = String.valueOf(entry.getValue());
             Map<String, ?> valueMap = JsonUtil.jsonStrToMap(valueString);
-            result.put(entry.getKey(),valueMap);
+            result.put(String.valueOf(entry.getKey()),valueMap);
         }
         return result;
     }
@@ -92,16 +92,16 @@ public class InvokeReportManagerImpl implements InvokeReportManager {
     @Override
     public Map<String, Map<String, Integer>> getConsumerByAppOnDay(String sourceApp, String dayTime) {
         String key = String.format(RedisKeyBean.appConsumerSumOnDayKEY,sourceApp,dayTime);
-        Map<String,String> redisMap = redisClientTemplate.getAllHash(key);
+        Map<Object,Object> redisMap = redisClientTemplate.getAllHash(key);
 
         Map<String, Map<String, Integer>> result = new HashMap<>();
         if (redisMap.isEmpty()) {
             return result;
         }
-        for(Map.Entry<String,String> entry : redisMap.entrySet()){
-            String valueString = entry.getValue();
+        for(Map.Entry<Object,Object> entry : redisMap.entrySet()){
+            String valueString = String.valueOf(entry.getValue());
             Map<String, Integer> valueMap = JsonUtil.jsonStrToMap(valueString);
-            result.put(entry.getKey(),valueMap);
+            result.put(String.valueOf(entry.getKey()),valueMap);
         }
         return result;
     }

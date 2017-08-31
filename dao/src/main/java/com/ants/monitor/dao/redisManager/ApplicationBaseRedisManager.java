@@ -30,7 +30,7 @@ public class ApplicationBaseRedisManager {
         return redisClientTemplate.getMapKey(key,appName);
     }
 
-    public Map<String,String> getAllAppPhone(){
+    public Map<Object,Object> getAllAppPhone(){
         return redisClientTemplate.getAllHash(RedisKeyBean.appPhoneMapKey);
     }
 }

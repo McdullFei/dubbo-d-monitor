@@ -6,6 +6,7 @@ import redis.clients.jedis.ShardedJedis;
  * redis最底层，从pool中获得shardedJsdis对象
  * Created by zxg on 15/7/20.
  */
+@Deprecated
 public interface RedisDataSource {
 
 //    从jedis池中获得一个jedis对象
