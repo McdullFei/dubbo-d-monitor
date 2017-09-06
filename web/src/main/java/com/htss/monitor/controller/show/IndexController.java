@@ -1,24 +1,19 @@
 package com.htss.monitor.controller.show;
 
-import com.htss.monitor.biz.support.service.AppChangeService;
-import com.htss.monitor.biz.support.service.ApplicationService;
-import com.htss.monitor.biz.support.service.HostService;
-import com.htss.monitor.biz.support.service.ServicesService;
-import com.htss.monitor.common.tools.TimeUtil;
+import com.google.common.collect.Lists;
 import com.htss.monitor.bean.MonitorConstants;
 import com.htss.monitor.bean.ResultVO;
-import com.htss.monitor.bean.bizBean.ApplicationChangeBO;
 import com.htss.monitor.service.IndexClientService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.Map;
 
 /**
  * Created by zxg on 15/11/5.
@@ -27,16 +22,7 @@ import java.util.*;
 @Controller
 @RequestMapping("/monitor/dash")
 public class IndexController {
-  @Autowired
-  private ApplicationService applicationService;
-  @Autowired
-  private ServicesService servicesService;
-  @Autowired
-  private HostService hostService;
-  @Autowired
-  private AppChangeService appChangeService;
-
-  @Autowired
+  @Resource
   private IndexClientService indexClientService;
 
   //主页
@@ -58,23 +44,17 @@ public class IndexController {
   public ModelAndView index() {
     ModelAndView modelAndView = new ModelAndView("monitorView/dashBoard/dashBoard");
 
-    Integer appSum = applicationService.getAllApplications().size();
-    Integer serviceSum = servicesService.getAllServicesString().size();
+    ResultVO vo = indexClientService.indexStatic();
+    Map<String, Object> m = (Map<String,Object>)vo.getData();
 
-    Integer hostSum = hostService.getHostBOMap().keySet().size();
-
-    String nowMonth = TimeUtil.getYearMonthString(new Date());
-
-    modelAndView.addObject("appSum", appSum);
-    modelAndView.addObject("serviceSum", serviceSum);
-    modelAndView.addObject("hostSum", hostSum);
-    modelAndView.addObject("nowMonth", nowMonth);
+    modelAndView.addObject("appSum", m.get("appSum"));
+    modelAndView.addObject("serviceSum", m.get("serviceSum"));
+    modelAndView.addObject("hostSum", m.get("hostSum"));
+    modelAndView.addObject("nowMonth", m.get("nowMonth"));
 
     //最近修改记录
-    List<ApplicationChangeBO> recentInsertList = appChangeService.getRecentInsertList();
-    List<ApplicationChangeBO> recentDeleteList = appChangeService.getRecentDeleteList();
-    modelAndView.addObject("recentInsertList", recentInsertList);
-    modelAndView.addObject("recentDeleteList", recentDeleteList);
+    modelAndView.addObject("recentInsertList", m.get("recentInsertList"));
+    modelAndView.addObject("recentDeleteList", m.get("recentDeleteList"));
 
     return modelAndView;
   }

@@ -2,12 +2,13 @@ package com.htss.monitor.controller.show;
 
 import com.htss.monitor.bean.ResultVO;
 import com.htss.monitor.service.ApplicationClientService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.annotation.Resource;
 
 /**
  * Created by zxg on 15/11/7.
@@ -16,7 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/monitor/application")
 public class ApplicationController {
-  @Autowired
+
+  @Resource
   private ApplicationClientService applicationClientService;
 
   //主页

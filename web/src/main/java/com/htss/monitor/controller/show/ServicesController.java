@@ -9,13 +9,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
+
 /**
  * Created by zxg on 15/11/19.
  */
 @Controller
 @RequestMapping("/monitor/services")
 public class ServicesController {
-  @Autowired
+
+  @Resource
   private StaticClientService staticClientService;
 
   //主页

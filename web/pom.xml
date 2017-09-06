@@ -20,10 +20,6 @@
 
     <dependency>
       <groupId>com.htss.monitor</groupId>
-      <artifactId>biz</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.htss.monitor</groupId>
       <artifactId>monitor-api</artifactId>
     </dependency>
 
@@ -117,6 +113,12 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context-support</artifactId>
+    </dependency>
+
+
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>dubbo</artifactId>
     </dependency>
 
   </dependencies>

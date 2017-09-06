@@ -1,6 +1,3 @@
-import com.alibaba.dubbo.common.utils.ConcurrentHashSet;
-import com.htss.monitor.common.tools.JsonUtil;
-import com.htss.monitor.common.tools.TimeUtil;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -68,47 +65,47 @@ public class DubboTest {
         System.out.println(a);
     }
 
-    @Test
-    public void testunmodifiableMap(){
-        Map<String, Map<String, Set<String>>> registryCache = new ConcurrentHashMap<>();
-        Set<String> a = new ConcurrentHashSet<>();
-        Set<String> b = new ConcurrentHashSet<>();
-        a.add("12");
-//        a = Collections.unmodifiableSet(a);
-
-        a.add("34");
-        b.add("aw");b.add("se");
-
-        Map<String, Set<String>> amap = new ConcurrentHashMap<>();
-        Map<String, Set<String>> bmap = new ConcurrentHashMap<>();
-        amap.put("1",a);
-//        amap = Collections.unmodifiableMap(amap);
-
-        amap.put("2", b);
-        bmap.put("2", b);
-
-        registryCache.put("first",amap);
-        registryCache = Collections.unmodifiableMap(registryCache);
-
-        registryCache.put("second", bmap);
-        System.out.println("1");
-
-
-    }
-
-
-    @Test
-    public void testRecentDay(){
-        Calendar calendar = Calendar.getInstance();
-        Date date = new Date(System.currentTimeMillis());
-        calendar.setTime(date);
-//        calendar.add(Calendar.WEEK_OF_YEAR, -1);
-        calendar.add(Calendar.DATE, -7);
-        date = calendar.getTime();
-
-
-        System.out.println(TimeUtil.getTimeString(date));
-    }
+//    @Test
+//    public void testunmodifiableMap(){
+//        Map<String, Map<String, Set<String>>> registryCache = new ConcurrentHashMap<>();
+//        Set<String> a = new ConcurrentHashSet<>();
+//        Set<String> b = new ConcurrentHashSet<>();
+//        a.add("12");
+////        a = Collections.unmodifiableSet(a);
+//
+//        a.add("34");
+//        b.add("aw");b.add("se");
+//
+//        Map<String, Set<String>> amap = new ConcurrentHashMap<>();
+//        Map<String, Set<String>> bmap = new ConcurrentHashMap<>();
+//        amap.put("1",a);
+////        amap = Collections.unmodifiableMap(amap);
+//
+//        amap.put("2", b);
+//        bmap.put("2", b);
+//
+//        registryCache.put("first",amap);
+//        registryCache = Collections.unmodifiableMap(registryCache);
+//
+//        registryCache.put("second", bmap);
+//        System.out.println("1");
+//
+//
+//    }
+//
+//
+//    @Test
+//    public void testRecentDay(){
+//        Calendar calendar = Calendar.getInstance();
+//        Date date = new Date(System.currentTimeMillis());
+//        calendar.setTime(date);
+////        calendar.add(Calendar.WEEK_OF_YEAR, -1);
+//        calendar.add(Calendar.DATE, -7);
+//        date = calendar.getTime();
+//
+//
+//        System.out.println(TimeUtil.getTimeString(date));
+//    }
 
     @Test
     public void testSwitch(){
@@ -149,7 +146,7 @@ public class DubboTest {
             }
         }
 
-        System.out.println(JsonUtil.objectToJsonStr(list));
-        System.out.println(JsonUtil.objectToJsonStr(zerolist));
+//        System.out.println(JsonUtil.objectToJsonStr(list));
+//        System.out.println(JsonUtil.objectToJsonStr(zerolist));
     }
 }

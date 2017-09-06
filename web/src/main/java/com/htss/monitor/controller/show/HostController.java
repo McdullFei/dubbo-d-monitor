@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
+
 /**
  * Created by zxg on 15/12/3.
  * 16:39
@@ -17,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/monitor/hosts")
 public class HostController {
 
-  @Autowired
+  @Resource
   private HostClientService hostClientService;
 
   //主页

@@ -15,4 +15,8 @@
         class = "com.htss.monitor.biz.monitorService.IndexClientServiceImpl"/>
   <bean id = "staticClientService"
         class = "com.htss.monitor.biz.monitorService.StaticClientServiceImpl"/>
+
+  <bean id = "appStopTask" class = "com.htss.monitor.biz.support.task.AppStopTask"/>
+  <bean id = "commonTask" class = "com.htss.monitor.biz.support.task.CommonTask"/>
+  <bean id = "invokeReportTask" class = "com.htss.monitor.biz.support.task.InvokeReportTask"/>
 </beans>

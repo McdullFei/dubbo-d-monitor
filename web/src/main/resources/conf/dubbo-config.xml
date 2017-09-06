@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo = "http://code.alibabatech.com/schema/dubbo"
+       xmlns = "http://www.springframework.org/schema/beans"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+  <description>dubbo配置</description>
+
+  <dubbo:reference id = "applicationClientService"
+                   interface = "com.htss.monitor.service.ApplicationClientService" lazy = "true"
+  />
+
+  <dubbo:reference id = "commonClientService"
+                   interface = "com.htss.monitor.service.CommonClientService" lazy = "true"
+  />
+
+  <dubbo:reference id = "staticClientService"
+                   interface = "com.htss.monitor.service.StaticClientService" lazy = "true"
+  />
+
+  <dubbo:reference id = "indexClientService"
+                   interface = "com.htss.monitor.service.IndexClientService" lazy = "true"
+  />
+
+  <dubbo:reference id = "hostClientService"
+                   interface = "com.htss.monitor.service.HostClientService" lazy = "true"
+  />
+
+  <dubbo:reference id = "appStopTask"
+                   interface = "com.htss.monitor.service.task.IAppStopTask" lazy = "true"
+  />
+
+  <dubbo:reference id = "invokeReportTask"
+                   interface = "com.htss.monitor.service.task.IInvokeReportTask" lazy = "true"
+  />
+
+  <dubbo:reference id = "commonTask"
+                   interface = "com.htss.monitor.service.task.ICommonTask" lazy = "true"
+  />
+
+</beans>

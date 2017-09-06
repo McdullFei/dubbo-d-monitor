@@ -11,20 +11,8 @@
   <!-- 扫描文件（ -->
   <context:component-scan base-package = "com.htss.monitor"/>
 
-  <!--数据数据源配置+mybatis-->
-  <import resource = "application-mybatis.xml"/>
-
   <!--dubbo-->
   <import resource = "application-dubbo.xml"/>
 
-  <!--工具配置-->
-  <import resource = "application-tool.xml"/>
-
-  <!--redis-->
-  <import resource = "application-redis.xml"/>
-
-  <!-- task -->
-  <import resource = "spring-quartz.xml"/>
-
-  <import resource = "spring-bean.xml"/>
+  <import resource = "dubbo-config.xml"/>
 </beans>

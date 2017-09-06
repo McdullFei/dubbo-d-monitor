@@ -12,4 +12,10 @@ public interface IndexClientService {
    * @return
    */
   ResultVO getMonthChangeData(String month, String day, Integer pageIndex, Integer pageSize);
+
+  /**
+   * 首页统计
+   * @return
+   */
+  ResultVO indexStatic();
 }

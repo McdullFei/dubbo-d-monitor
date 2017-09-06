@@ -27,7 +27,7 @@ public class InvokeBizImpl implements InvokeBiz {
     private HostService hostService;
     @Autowired
     private RedisClientTemplate redisClientTemplate;
-    @Resource(name="invokeDOMapper")
+    @Resource
     private InvokeDOMapper invokeDOMapper;
 
     //排行榜展示最大的数量

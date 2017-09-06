@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo = "http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+  <description>开发专用的全局配置</description>
+
+  <!-- dubbo 配置 -->
+  <dubbo:application name = "provider-dubbo-monitor" owner = "HTSS-DUBBO-MONITOR"/>
+  <!-- 注册中心服务地址 -->
+  <dubbo:registry protocol = "zookeeper" address = "192.168.2.161:2181"/>
+  <!-- 监控中心 -->
+  <dubbo:monitor protocol = "registry"/>
+  <!-- 暴露服务端口 -->
+  <dubbo:protocol name = "dubbo" port = "20792"/>
+
+  <dubbo:reference id="registryService" interface="com.alibaba.dubbo.registry.RegistryService" />
+
+</beans>

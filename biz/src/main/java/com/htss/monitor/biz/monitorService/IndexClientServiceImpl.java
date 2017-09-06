@@ -3,12 +3,17 @@ package com.htss.monitor.biz.monitorService;
 import com.htss.monitor.biz.support.service.AppChangeService;
 import com.htss.monitor.bean.ResultVO;
 import com.htss.monitor.bean.bizBean.ApplicationChangeBO;
+import com.htss.monitor.biz.support.service.ApplicationService;
+import com.htss.monitor.biz.support.service.HostService;
+import com.htss.monitor.biz.support.service.ServicesService;
+import com.htss.monitor.common.tools.TimeUtil;
 import com.htss.monitor.service.IndexClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +23,15 @@ import java.util.Set;
 public class IndexClientServiceImpl implements IndexClientService {
   @Autowired
   private AppChangeService appChangeService;
+
+  @Autowired
+  private ServicesService servicesService;
+
+  @Autowired
+  private ApplicationService applicationService;
+
+  @Autowired
+  private HostService hostService;
 
   @Override
   public ResultVO getMonthChangeData(String month, String day, Integer pageIndex, Integer pageSize) {
@@ -44,6 +58,31 @@ public class IndexClientServiceImpl implements IndexClientService {
     Integer sum = appChangeService.getListSum(day);
     resultMap.put("list",resultList);
     resultMap.put("sum",sum);
+
+    return ResultVO.wrapSuccessfulResult(resultMap);
+  }
+
+  @Override
+  public ResultVO indexStatic() {
+
+    Integer appSum = applicationService.getAllApplications().size();
+    Integer serviceSum = servicesService.getAllServicesString().size();
+
+    Integer hostSum = hostService.getHostBOMap().keySet().size();
+
+    String nowMonth = TimeUtil.getYearMonthString(new Date());
+
+    List<ApplicationChangeBO> recentInsertList = appChangeService.getRecentInsertList();
+    List<ApplicationChangeBO> recentDeleteList = appChangeService.getRecentDeleteList();
+
+    Map<String,Object> resultMap = new HashMap<>();
+    resultMap.put("appSum", appSum);
+    resultMap.put("serviceSum", serviceSum);
+    resultMap.put("hostSum", hostSum);
+    resultMap.put("nowMonth", nowMonth);
+
+    resultMap.put("recentInsertList", recentInsertList);
+    resultMap.put("recentDeleteList", recentDeleteList);
 
     return ResultVO.wrapSuccessfulResult(resultMap);
   }

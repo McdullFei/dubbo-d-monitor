@@ -80,16 +80,12 @@
       <artifactId>mysql-connector-java</artifactId>
     </dependency>
 
-  </dependencies>
+    <dependency>
+      <groupId>com.101tec</groupId>
+      <artifactId>zkclient</artifactId>
+    </dependency>
 
-  <properties>
-    <!-- 同一集群内的多个地址用逗号分隔，如：ip:port,ip:port -->
-    <pom.dubbo.owner>HTSS-DUBBO-MONITOR</pom.dubbo.owner>
-    <!-- 生产者和消费者在各自文件中，配置了不同的前缀 -->
-    <pom.dubbo.name>dubbo-monitor</pom.dubbo.name>
-    <pom.dubbo.provider.protocol>dubbo</pom.dubbo.provider.protocol>
-    <pom.dubbo.provider.port>20792</pom.dubbo.provider.port>
-  </properties>
+  </dependencies>
 
   <build>
     <!-- <finalName>dubbo-package</finalName> -->

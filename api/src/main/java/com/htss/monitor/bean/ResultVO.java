@@ -2,11 +2,13 @@ package com.htss.monitor.bean;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by zxg on 15/11/2.
  */
 @Data
-public class ResultVO {
+public class ResultVO implements Serializable{
 
   private boolean success;
   private String code = "000";

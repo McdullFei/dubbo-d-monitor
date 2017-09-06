@@ -1,28 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns = "http://www.springframework.org/schema/beans"
-       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
        xmlns:dubbo = "http://code.alibabatech.com/schema/dubbo"
+       xmlns = "http://www.springframework.org/schema/beans"
        xsi:schemaLocation = "http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://code.alibabatech.com/schema/dubbo
-        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-  <!-- dubbo 配置 -->
-  <dubbo:application name = "provider-${pom.dubbo.name}" owner = "${pom.dubbo.owner}"/>
-  <!-- 注册中心服务地址 -->
-  <dubbo:registry protocol = "${pom.dubbo.registry.protocol}" address =
-      "${pom.dubbo.registry.address}"/>
-  <!-- 监控中心 -->
-  <dubbo:monitor protocol = "registry"/>
-  <!-- 暴露服务端口 -->
-  <dubbo:protocol name = "${pom.dubbo.provider.protocol}" port = "${pom.dubbo.provider.port}"/>
+  <description>dubbo配置，服务提供</description>
+  <!--在Provider可以配置的Consumer端属性有：
+  timeout 方法调用超时
+  retries 失败重试次数，缺省是2（表示加上第一次调用，会调用3次）
+  loadbalance 负载均衡算法，缺省是随机（random）。轮询(roundrobin)、最不活跃优先（leastactive）
+  actives 消费者端，最大并发调用限制。
+  -->
 
-
-
-
-
-
-
+  <!-- 暴露API服务，Provider上尽量多配置Consumer端的属性，
+    让Provider实现者一开始就思考Provider服务特点、服务质量的问题。 -->
+  <!-- https://github.com/alibaba/dubbo/wiki/user-guide-recommendation -->
+  <!-- 应用管理 -->
+  <!-- 获取accessToken -->
   <dubbo:service ref = "applicationClientService"
                  interface = "com.htss.monitor.service.ApplicationClientService"
                  timeout = "30000"
@@ -71,24 +68,11 @@
                  <!--retries = "9"-->
                  <!--loadbalance = "leastactive"/>-->
 
-  <!--dubbo配置-->
-  <!-- 当前应用信息配置 -->
-  <!--<dubbo:application name = "${dubbo.monitor.application.name}" organization = "Data" owner = ""/>-->
 
-  <!--&lt;!&ndash; 连接注册中心配置 &ndash;&gt;-->
-  <!--<dubbo:registry protocol = "zookeeper" address = "${dubbo.registry.address}"/>-->
 
-  <!--&lt;!&ndash; 暴露服务协议配置 &ndash;&gt;-->
-  <!--<dubbo:protocol name = "dubbo" port = "${dubbo.port}"/>-->
-
-  <!--<dubbo:monitor protocol="registry"/>-->
 
   <!-- 暴露服务配置,超时时间60s -->
-  <!--<dubbo:service interface = "com.alibaba.dubbo.monitor.MonitorService" ref = "monitorService"-->
-                 <!--timeout = "60000"/>-->
-  <!--<bean id = "monitorService" class = "DubboMonitorService"/>-->
+  <dubbo:service interface="com.alibaba.dubbo.monitor.MonitorService" ref="monitorService"  timeout="60000"/>
 
-  <!--<dubbo:reference id = "registryService" interface = "com.alibaba.dubbo.registry.RegistryService"/>-->
-
-
+  <bean id="monitorService" class="com.htss.monitor.biz.dubboService.DubboMonitorService" />
 </beans>

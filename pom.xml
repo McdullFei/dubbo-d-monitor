@@ -432,11 +432,6 @@
           <groupId>com.alibaba.citrus.tool</groupId>
           <artifactId>autoconfig-maven-plugin</artifactId>
           <version>1.2</version>
-          <configuration>
-            <!-- 读取项目路径下的 antx.properties -->
-            <userProperties>${user.dir}/antx.properties</userProperties>
-            <exploding>true</exploding>
-          </configuration>
           <executions>
             <execution>
               <phase>package</phase>

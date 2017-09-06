@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+
 /**
  * Created by zxg on 15/11/11.
  */
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/monitor/common")
 public class CommonController {
 
-  @Autowired
+  @Resource
   private CommonClientService commonClientService;
 
   //测试

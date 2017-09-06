@@ -14,12 +14,6 @@
   <!--数据数据源配置+mybatis-->
   <import resource = "application-mybatis.xml"/>
 
-  <!--mybatis  事务配置-->
-  <!--<import resource="application-transaction.xml"/>-->
-
-  <!--dubbo-->
-  <import resource = "application-dubbo.xml"/>
-
   <!--工具配置-->
   <import resource = "application-tool.xml"/>
 
@@ -27,4 +21,6 @@
   <import resource = "application-redis.xml"/>
 
   <import resource = "spring-bean.xml"/>
+
+  <import resource = "spring-quartz.xml"/>
 </beans>
