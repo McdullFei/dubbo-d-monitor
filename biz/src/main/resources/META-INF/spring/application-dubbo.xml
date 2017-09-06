@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo = "http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+  <!-- dubbo 配置 -->
+  <dubbo:application name = "provider-${pom.dubbo.name}" owner = "${pom.dubbo.owner}"/>
+  <!-- 注册中心服务地址 -->
+  <dubbo:registry protocol = "${pom.dubbo.registry.protocol}" address =
+      "${pom.dubbo.registry.address}"/>
+  <!-- 监控中心 -->
+  <dubbo:monitor protocol = "registry"/>
+  <!-- 暴露服务端口 -->
+  <dubbo:protocol name = "${pom.dubbo.provider.protocol}" port = "${pom.dubbo.provider.port}"/>
+
+
+
+
+
+
+
+  <dubbo:service ref = "applicationClientService"
+                 interface = "com.htss.monitor.service.ApplicationClientService"
+                 timeout = "30000"
+                 retries = "9"
+                 loadbalance = "leastactive"/>
+
+  <dubbo:service ref = "commonClientService"
+                 interface = "com.htss.monitor.service.CommonClientService"
+                 timeout = "30000"
+                 retries = "9"
+                 loadbalance = "leastactive"/>
+
+  <dubbo:service ref = "staticClientService"
+                 interface = "com.htss.monitor.service.StaticClientService"
+                 timeout = "30000"
+                 retries = "9"
+                 loadbalance = "leastactive"/>
+
+  <dubbo:service ref = "indexClientService"
+                 interface = "com.htss.monitor.service.IndexClientService"
+                 timeout = "30000"
+                 retries = "9"
+                 loadbalance = "leastactive"/>
+
+  <dubbo:service ref = "hostClientService"
+                 interface = "com.htss.monitor.service.HostClientService"
+                 timeout = "30000"
+                 retries = "9"
+                 loadbalance = "leastactive"/>
+
+  <!--<dubbo:service ref = "appStopTask"-->
+                 <!--interface = "com.htss.monitor.service.task.IAppStopTask"-->
+                 <!--timeout = "30000"-->
+                 <!--retries = "9"-->
+                 <!--loadbalance = "leastactive"/>-->
+
+  <!--<dubbo:service ref = "invokeReportTask"-->
+                 <!--interface = "com.htss.monitor.service.task.IInvokeReportTask"-->
+                 <!--timeout = "30000"-->
+                 <!--retries = "9"-->
+                 <!--loadbalance = "leastactive"/>-->
+
+  <!--<dubbo:service ref = "commonTask"-->
+                 <!--interface = "com.htss.monitor.service.task.ICommonTask"-->
+                 <!--timeout = "30000"-->
+                 <!--retries = "9"-->
+                 <!--loadbalance = "leastactive"/>-->
+
+  <!--dubbo配置-->
+  <!-- 当前应用信息配置 -->
+  <!--<dubbo:application name = "${dubbo.monitor.application.name}" organization = "Data" owner = ""/>-->
+
+  <!--&lt;!&ndash; 连接注册中心配置 &ndash;&gt;-->
+  <!--<dubbo:registry protocol = "zookeeper" address = "${dubbo.registry.address}"/>-->
+
+  <!--&lt;!&ndash; 暴露服务协议配置 &ndash;&gt;-->
+  <!--<dubbo:protocol name = "dubbo" port = "${dubbo.port}"/>-->
+
+  <!--<dubbo:monitor protocol="registry"/>-->
+
+  <!-- 暴露服务配置,超时时间60s -->
+  <!--<dubbo:service interface = "com.alibaba.dubbo.monitor.MonitorService" ref = "monitorService"-->
+                 <!--timeout = "60000"/>-->
+  <!--<bean id = "monitorService" class = "DubboMonitorService"/>-->
+
+  <!--<dubbo:reference id = "registryService" interface = "com.alibaba.dubbo.registry.RegistryService"/>-->
+
+
+</beans>

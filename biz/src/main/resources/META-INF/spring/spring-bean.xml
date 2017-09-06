@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns = "http://www.springframework.org/schema/beans"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+  <description>手动声明所有API的实现类，代替@Service</description>
+
+  <bean id = "applicationClientService"
+        class = "com.htss.monitor.biz.monitorService.ApplicationClientServiceImpl"/>
+  <bean id = "commonClientService"
+        class = "com.htss.monitor.biz.monitorService.CommonClientServiceImpl"/>
+  <bean id = "hostClientService"
+        class = "com.htss.monitor.biz.monitorService.HostClientServiceImpl"/>
+  <bean id = "indexClientService"
+        class = "com.htss.monitor.biz.monitorService.IndexClientServiceImpl"/>
+  <bean id = "staticClientService"
+        class = "com.htss.monitor.biz.monitorService.StaticClientServiceImpl"/>
+</beans>

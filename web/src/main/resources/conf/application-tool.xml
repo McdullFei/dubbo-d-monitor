@@ -20,15 +20,15 @@
 
     <!--TASk 定时任务-->
     <task:annotation-driven/>
-    <context:component-scan base-package="com.ants.monitor.controller.task">
+    <context:component-scan base-package="com.htss.monitor.controller">
     </context:component-scan>
 
     <!--初始化SpringApplication-->
-    <bean id="springContextsUtil" class="com.ants.monitor.common.tools.SpringContextsUtil" lazy-init="false"></bean>
+    <bean id="springContextsUtil" class="com.htss.monitor.common.tools.SpringContextsUtil" lazy-init="false"></bean>
 
     <!--暂时注释掉，调试前端-->
     <!-- 当Spring容器启动完成后执行下面的这个Bean -->
-    <bean class="com.ants.monitor.biz.support.processor.RegistryContainerProcessor"/>
+    <bean class="com.htss.monitor.biz.support.processor.RegistryContainerProcessor"/>
 
 
 

@@ -6,7 +6,7 @@ jdbc.password=${jdbc.password}
 redis.host = ${redis.host}
 
 #dubbo
-dubbo.application.name = ${dubbo.application.name}
+dubbo.application.name = ${dubbo.monitor.application.name}
 dubbo.port = ${dubbo.port}
 dubbo.registry.address = ${dubbo.registry.address}
 

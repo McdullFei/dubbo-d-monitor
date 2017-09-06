@@ -14,7 +14,7 @@
 
         <property name="redis.host" defaultValue="redis://ants-monitor:123456@127.0.0.1:6379/2" description="redis配置：密码@ip:host/db号"/>
 
-        <property name="dubbo.application.name" defaultValue="ants-monitor" description="监控中心项目名"/>
+        <property name="dubbo.monitor.application.name" defaultValue="ants-monitor" description="监控中心项目名"/>
         <property name="dubbo.port" defaultValue="19300" description="#此处为port地址，该监控中心应用的端口号"/>
         <property name="dubbo.registry.address" defaultValue="127.0.0.1:2181" description="# 此处为zk地址，若多个，则用逗号隔开。例如（zookeeper.address = 127.0.0.1:2181,127.0.0.2:2181,127.0.0.3:2181）"/>
 

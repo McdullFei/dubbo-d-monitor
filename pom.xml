@@ -9,9 +9,8 @@
   <modules>
     <module>biz</module>
     <module>web</module>
-    <module>bean</module>
-    <module>dao</module>
     <module>common</module>
+    <module>api</module>
     <!--<module>monitorapi</module>-->
   </modules>
 
@@ -56,15 +55,73 @@
     <jetty.version>8.1.16.v20140903</jetty.version>
 
 
+    <!-- 同一集群内的多个地址用逗号分隔，如：ip:port,ip:port -->
+    <pom.dubbo.owner>HTSS-DUBBO-MONITOR</pom.dubbo.owner>
+    <!-- 生产者和消费者在各自文件中，配置了不同的前缀 -->
+    <pom.dubbo.name>dubbo-monitor</pom.dubbo.name>
+    <pom.dubbo.provider.protocol>dubbo</pom.dubbo.provider.protocol>
+    <pom.dubbo.provider.port>20792</pom.dubbo.provider.port>
+
   </properties>
+
+
+  <profiles>
+    <profile>
+      <id>local</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <!-- 日志 -->
+        <pom.log.dir>d:/javalog/htss3.0/htss-user</pom.log.dir>
+        <!-- 不同集群的注册中心，请配置多个<dubbo:registry>标签 -->
+        <pom.dubbo.registry.protocol>zookeeper</pom.dubbo.registry.protocol>
+        <pom.dubbo.registry.address>192.168.2.161:2181</pom.dubbo.registry.address>
+      </properties>
+    </profile>
+    <profile>
+      <id>dev</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <!-- 日志 -->
+        <pom.log.dir>/var/log/javalog/htss3.0/htss-user</pom.log.dir>
+        <!-- 不同集群的注册中心，请配置多个<dubbo:registry>标签 -->
+        <pom.dubbo.registry.protocol>zookeeper</pom.dubbo.registry.protocol>
+        <pom.dubbo.registry.address>192.168.2.161:2181</pom.dubbo.registry.address>
+      </properties>
+    </profile>
+    <profile>
+      <id>dev_sdkt</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <!-- 日志 -->
+        <pom.log.dir>/var/log/javalog/htss3.0/htss-user</pom.log.dir>
+        <!-- 不同集群的注册中心，请配置多个<dubbo:registry>标签 -->
+        <pom.dubbo.registry.protocol>zookeeper</pom.dubbo.registry.protocol>
+        <pom.dubbo.registry.address>172.17.86.185:2181</pom.dubbo.registry.address>
+      </properties>
+    </profile>
+    <profile>
+      <id>proc</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <!-- 日志 -->
+        <pom.log.dir>/logs/htss3.0/htss-user</pom.log.dir>
+        <!-- 不同集群的注册中心，请配置多个<dubbo:registry>标签 -->
+        <pom.dubbo.registry.protocol>zookeeper</pom.dubbo.registry.protocol>
+        <pom.dubbo.registry.address>zookeeper.k12365.com:2181</pom.dubbo.registry.address>
+      </properties>
+    </profile>
+  </profiles>
 
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>com.htss.monitor</groupId>
-        <artifactId>bean</artifactId>
-        <version>1.0-SNAPSHOT</version>
-      </dependency>
       <dependency>
         <groupId>com.htss.monitor</groupId>
         <artifactId>common</artifactId>
@@ -84,6 +141,12 @@
         <groupId>com.htss.monitor</groupId>
         <artifactId>web</artifactId>
         <version>1.0-SNAPSHOT</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.htss.monitor</groupId>
+        <artifactId>monitor-api</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
       </dependency>
 
       <dependency>
@@ -410,16 +473,5 @@
     </resources>
 
   </build>
-
-  <!-- 添加其他远程仓库 -->
-  <repositories>
-    <repository>
-      <id>other2</id>
-      <name>factory</name>
-      <url>http://repository.sonatype.org/content/</url>
-    </repository>
-
-  </repositories>
-  <!-- end 添加仓库 -->
 
 </project>
