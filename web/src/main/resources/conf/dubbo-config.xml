@@ -42,16 +42,4 @@
                    interface = "com.htss.monitor.service.HostClientService" lazy = "true"
   />
 
-  <dubbo:reference id = "appStopTask"
-                   interface = "com.htss.monitor.service.task.IAppStopTask" lazy = "true"
-  />
-
-  <dubbo:reference id = "invokeReportTask"
-                   interface = "com.htss.monitor.service.task.IInvokeReportTask" lazy = "true"
-  />
-
-  <dubbo:reference id = "commonTask"
-                   interface = "com.htss.monitor.service.task.ICommonTask" lazy = "true"
-  />
-
 </beans>

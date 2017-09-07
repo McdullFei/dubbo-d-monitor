@@ -9,6 +9,13 @@
 2.更新jar包中ShardedJedis的封装已经使用spring-data-redis(废弃RedisClientTemplate、RedisDataSource)
 
 
+### 2017.09.07
+> HTSS dubbo-monitor 0.0.1:
+
+1.将结构修改为dubbo服务，方便集成自有以dubbo服务为基础的运营后台系统
+
+ - biz作为服务提供者provider
+ - web为消费者consumer demo，后续可以将web端单独拿进运营后台的consumer中
 
 
 
