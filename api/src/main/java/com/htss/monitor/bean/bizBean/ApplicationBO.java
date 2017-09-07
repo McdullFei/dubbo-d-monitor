@@ -2,6 +2,7 @@ package com.htss.monitor.bean.bizBean;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ import java.util.Set;
  * Created by zxg on 15/11/16.
  */
 @Data
-public class ApplicationBO {
+public class ApplicationBO implements Serializable{
 
   private String applicationName;
 

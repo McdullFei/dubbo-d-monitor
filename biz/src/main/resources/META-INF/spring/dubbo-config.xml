@@ -12,11 +12,11 @@
   <!-- dubbo 配置 -->
   <dubbo:application name = "provider-dubbo-monitor" owner = "HTSS-DUBBO-MONITOR"/>
   <!-- 注册中心服务地址 -->
-  <dubbo:registry protocol = "zookeeper" address = "192.168.2.161:2181"/>
+  <dubbo:registry protocol = "zookeeper" address = "${dubbo.registry.address}"/>
   <!-- 监控中心 -->
   <dubbo:monitor protocol = "registry"/>
   <!-- 暴露服务端口 -->
-  <dubbo:protocol name = "dubbo" port = "20792"/>
+  <dubbo:protocol name = "dubbo" port = "${dubbo.port}"/>
 
   <dubbo:reference id="registryService" interface="com.alibaba.dubbo.registry.RegistryService" />
 

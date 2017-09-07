@@ -3,6 +3,7 @@ package com.htss.monitor.bean.bizBean;
 import lombok.Data;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Set;
  */
 @ToString
 @Data
-public class HostBO {
+public class HostBO implements Serializable {
   private String host;
   private String port;
 

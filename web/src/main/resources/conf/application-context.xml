@@ -11,8 +11,5 @@
   <!-- 扫描文件（ -->
   <context:component-scan base-package = "com.htss.monitor"/>
 
-  <!--dubbo-->
-  <import resource = "application-dubbo.xml"/>
-
   <import resource = "dubbo-config.xml"/>
 </beans>

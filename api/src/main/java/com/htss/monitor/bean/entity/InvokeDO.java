@@ -2,10 +2,11 @@ package com.htss.monitor.bean.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class InvokeDO {
+public class InvokeDO implements Serializable {
   private String uuId;
 
   private String application;

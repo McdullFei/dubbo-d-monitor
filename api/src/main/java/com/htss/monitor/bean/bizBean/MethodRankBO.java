@@ -2,6 +2,8 @@ package com.htss.monitor.bean.bizBean;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by zxg on 16/7/4.
  * 14:18
@@ -9,7 +11,7 @@ import lombok.Data;
  * 方法排行榜的bo类
  */
 @Data
-public class MethodRankBO {
+public class MethodRankBO implements Serializable {
   //方法名
   public String methodName;
   //函数

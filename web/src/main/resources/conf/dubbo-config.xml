@@ -8,6 +8,20 @@
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
   <description>dubbo配置</description>
 
+  <!--dubbo配置-->
+  <!-- 当前应用信息配置 -->
+  <dubbo:application name="${dubbo.application.name}" organization="Data" owner=""/>
+
+  <!-- 连接注册中心配置 -->
+  <dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}"/>
+
+  <!-- 暴露服务协议配置 -->
+  <dubbo:protocol name="dubbo" port="${dubbo.port}"/>
+
+  <!--<dubbo:monitor protocol="registry"/>-->
+  <dubbo:reference id="registryService" interface="com.alibaba.dubbo.registry.RegistryService" />
+
+
   <dubbo:reference id = "applicationClientService"
                    interface = "com.htss.monitor.service.ApplicationClientService" lazy = "true"
   />
