@@ -2,6 +2,12 @@
 <project xmlns = "http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
 
+  <!--<parent>-->
+    <!--<groupId>com.yingxinhuitong.htss</groupId>-->
+    <!--<artifactId>parent</artifactId>-->
+    <!--<version>3.1.0</version>-->
+  <!--</parent>-->
+
   <groupId>com.htss.monitor</groupId>
   <artifactId>dubbo-monitor</artifactId>
   <packaging>pom</packaging>
@@ -15,6 +21,8 @@
   </modules>
 
   <properties>
+    <scm.host>https://scm.yxht.dev/svn/htss3.0/web-admin</scm.host>
+
     <!-- 编码 -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <test.version>4.12</test.version>
